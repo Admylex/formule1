@@ -1,0 +1,50 @@
+﻿@model Projet.Models.Resultat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Resultat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PiloteID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PiloteID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CircuitID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CircuitID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResultatID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

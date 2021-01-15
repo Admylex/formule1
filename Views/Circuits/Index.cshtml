@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Projet.Models.Circuit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Circuits", FormMethod.Get))
+{
+    <p>
+        Recherche par le pays: @Html.TextBox("SearchString")
+        <input type="submit" value="Recherche" />
+    </p>
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nom du circuit
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pays)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom_c)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ville)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pays)
+            </td>
+            <td>
+                @if (Session["pseudo"] != null)
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CircuitID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CircuitID })
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.CircuitID })
+
+            </td>
+        </tr>
+    }
+
+</table>

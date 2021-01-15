@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Projet.Models.Resultat>
+
+@{
+    ViewBag.Title = "Resultat";
+}
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Position
+        </th>
+        <th>
+            Pilote
+        </th>
+        <th>
+            Ecurie
+        </th>
+        <th>
+            Pts
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pilote.Nom)
+                @Html.DisplayFor(modelItem => item.pilote.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pilote.ecurie.Nom_e)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.point.Point_p)
+            </td>
+        </tr>
+    }
+</table>
+
+

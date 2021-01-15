@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Projet.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row justify-content-md-start">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Bienvenue
+            </div>
+            <div class="card-body">
+                @if (Session["Pseudo"] != null)
+                {
+                    <p>Nom: @Session["Pseudo"].ToString()</p>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

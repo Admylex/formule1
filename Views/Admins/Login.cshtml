@@ -1,0 +1,47 @@
+﻿
+
+@model Projet.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<div class="">
+    <section id="">
+        <div class="">
+
+            <h1>Connexion</h1>
+
+            <div>
+                @if (Session["Pseudo"] == null)
+                {
+                    using (Html.BeginForm("Login", "Admins", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+
+                            @Html.TextBoxFor(m => m.pseudo, new { @class = "form-control", @placeholder = "pseudo", @id = "" })
+
+                        </div>
+                        <div class="form-group">
+
+                            @Html.PasswordFor(m => m.mdp, new { @class = "form-control", @placeholder = "mdp", @id = "" })
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Déja Connecter</p><br />
+                }
+
+            </div>
+        </div>
+    </section>
+</div>
+

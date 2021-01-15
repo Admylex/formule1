@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Projet.Models.Pilote>
+
+@{
+    ViewBag.Title = "Pilotes";
+}
+
+<h2>Pilotes</h2>
+
+@using (Html.BeginForm("Index", "Pilotes", FormMethod.Get))
+{
+    <p>
+        Recherche par le nom: @Html.TextBox("SearchString")
+        <input type="submit" value="Recherche" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Naissance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nat)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Numero)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Prenom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date_Naissance)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nat)
+    </td>
+    <td>
+        @if (Session["pseudo"] != null)
+        {
+            @Html.ActionLink("Delete", "Delete", new { id = item.PiloteID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.PiloteID })
+        }
+        @Html.ActionLink("Details", "Details", new { id = item.PiloteID }) 
+    </td>
+</tr>
+    }
+
+</table>

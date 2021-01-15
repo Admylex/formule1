@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Projet.Models.Ecurie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "Ecuries", FormMethod.Get))
+{
+    <p>
+        Recherche par le nom: @Html.TextBox("SearchString")
+        <input type="submit" value="Recherche" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom_e)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nationalite_e)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom_e)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationalite_e)
+            </td>
+            <td>
+                @if (Session["pseudo"] != null)
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EcurieID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EcurieID })
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.EcurieID })
+
+            </td>
+        </tr>
+    }
+
+</table>
